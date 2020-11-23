@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -71,7 +72,15 @@ class SignupForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(`Current state is ${JSON.stringify(this.state)}`);
+    // alert(`Current state is ${JSON.stringify(this.state)}`);
+
+    axios.post('https://jsonplaceholder.typicode.com/posts', this.state)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   render() {
